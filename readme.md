@@ -12,4 +12,4 @@ have made for an internship assignment .
 ## API Endpoints
 
 1. `/addSchools`
-
+2. `/listSchools`
