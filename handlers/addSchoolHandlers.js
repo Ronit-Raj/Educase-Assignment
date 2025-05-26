@@ -64,9 +64,10 @@ export async function addSchoolHandler(req,res,connection) {
         const [results,fields]=await connection.execute(query,values)
     }
     catch(err){
-        console.log('some error occurred');
-        console.log(err);
-        res.status(500)
+        if(err.code === 'ER_DUP_ENTRY'){
+            res.status(403).send('duplicate values ');
+        }
+        res.status(500).send(`db error ${err.code}`)
     }
     res.status(200).send('ok')
     
